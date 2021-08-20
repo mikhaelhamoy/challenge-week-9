@@ -120,32 +120,32 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     const readmeContent =  `
-    # Your Project Title
+# Your Project Title
 
-    ${data.title}
+${data.title}
 
-    ## Description
+## Description
 
-    ${data.description}
+${data.description}
 
-    ## Table of Contents
+## Table of Contents
 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [Credits](#credits)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Test](#tests)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+* [Contributing](#contributing)
+* [Test](#tests)
 
-    ## Installation
+## Installation
 
-    ## Usage
+## Usage
     
-    ## License
+## License
 
-    ## Contributing
+## Contributing
 
-    ## Tests
+## Tests
     `;
 
     fs.writeFile(fileName, readmeContent, err => {
