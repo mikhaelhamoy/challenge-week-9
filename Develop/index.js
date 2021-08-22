@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const generatePage = require('./src/readmeTemplate.js')
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 
@@ -32,7 +33,7 @@ const questions = [
         }
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'installation',
         message: 'What is the installation instructions? (Required)',
         validate: installationInput => {
@@ -45,7 +46,7 @@ const questions = [
         }
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'usage',
         message: 'What is the usage information? (Required)',
         validate: usageInput => {
@@ -58,8 +59,8 @@ const questions = [
         }
     },
     {
-        type: 'input',
-        name: 'contribution',
+        type: 'editor',
+        name: 'contributing',
         message: 'What is the contribution guidelines? (Required)',
         validate: contributionInput => {
             if (contributionInput) {
@@ -71,7 +72,7 @@ const questions = [
         }
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'test',
         message: 'What is the test instructions? (Required)',
         validate: testInput => {
@@ -119,36 +120,7 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    const readmeContent =  `
-# Your Project Title
-
-${data.title}
-
-## Description
-
-${data.description}
-
-## Table of Contents
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
-* [Contributing](#contributing)
-* [Test](#tests)
-
-## Installation
-
-## Usage
-    
-## License
-
-## Contributing
-
-## Tests
-    `;
-
-    fs.writeFile(fileName, readmeContent, err => {
+    fs.writeFile(fileName, generatePage(data), err => {
         // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
         if (err)
             console.log(err);
