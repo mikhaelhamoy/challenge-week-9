@@ -31,7 +31,7 @@ This repository will generate a professional README.md file base on user inputs.
 * After answering the prompts, the file will be generated inside the "dist" folder.
 * Copy the generated file to your repository.
 
-Click link to watch [Usage Video.](https://drive.google.com/file/d/1F8l0uaqGIFeWsljz7dqYWPaj9lO6g7PE/view)
+Click link to watch [Usage Video.](https://www.youtube.com/watch?v=jbmwtDYEdZQ)
       
 ## Contributing 
  
