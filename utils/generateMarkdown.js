@@ -36,9 +36,7 @@ function badge(confirm, license){
     const badge = badgeArr[badgeIndex];
 
     return `
-    
-![License Badge](https://img.shields.io/badge/license-${badge}-green)
-    
+![License Badge](https://img.shields.io/badge/license-${badge}-green)  
     `;
   }
   else
@@ -47,10 +45,8 @@ function badge(confirm, license){
 
 function installation(confirm, content){
   if (confirm)
-    return `
-    
-${content}
-      
+    return `  
+${content}    
       `;
   else
     return '';
@@ -58,10 +54,8 @@ ${content}
 
 function usage(confirm, content){
   if (confirm)
-    return `
-    
-${content}
-      
+    return `  
+${content}    
       `;
   else
     return '';
@@ -69,10 +63,8 @@ ${content}
 
 function contributing(confirm, content){
   if (confirm)
-    return `
-    
-${content}
-      
+    return `   
+${content}    
       `;
   else
     return '';
@@ -80,10 +72,8 @@ ${content}
 
 function test(confirm, content){
   if (confirm)
-    return `
-    
-${content}
-    
+    return `  
+${content}    
     `;
   else
     return '';
@@ -92,9 +82,7 @@ ${content}
 function license(confirm, license){
   if (confirm)
   return `
-
 Licensed under [${license}](./LICENSE).
-  
     `;
   else
     return '';
@@ -102,8 +90,7 @@ Licensed under [${license}](./LICENSE).
 
 function questions(confirm, username, email){
   if (confirm)
-    return `
-    
+    return `   
 * GitHub: [${username}](https://github.com/${username})
 * Email: [${email}](mailto:${email})
 
@@ -112,18 +99,6 @@ For questions, contact me through email, and for more projects and updates, foll
   else
     return '';
 };
-
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {};
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {};
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {};
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
