@@ -1,10 +1,14 @@
 
 # hello
 
+    
+![License Badge](https://img.shields.io/badge/license-MIT-green)
+    
+    
 ## Description
   
 hello
-  
+
 ## Table of Contents
   
 * [Installation](#installation)
@@ -14,33 +18,19 @@ hello
 * [Test](#tests)
 * [Questions](#questions)
   
-## Installation
+## Installation 
   
+## Usage 
 
-  
-## Usage
-  
-
-
-## Contributing
-  
-
-  
-## Tests
-  
-
-      
+## Contributing 
+ 
+## Tests 
+     
 ## License
 
 
-License under the [MIT License](./LICENSE)
+Licensed under [MIT License](./LICENSE).
   
-  
+    
 ## Questions
 
-
-* GitHub: [mikhaelhamoy](https://github.com/mikhaelhamoy)
-* Email: [mhamoy.sm@gmail.com](mailto:mhamoy.sm@gmail.com)
-
-For questions, contact me through email, and for more projects and updates, follow me on GitHub.
-    
