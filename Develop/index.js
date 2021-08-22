@@ -1,6 +1,5 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const generatePage = require('./src/readmeTemplate.js')
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 
@@ -33,72 +32,110 @@ const questions = [
         }
     },
     {
+        type: 'confirm',
+        name: 'confirmInstallation',
+        message: 'Would you like to add Installation Instructions section?',
+        default: true
+    },
+    {
         type: 'editor',
         name: 'installation',
-        message: 'What is the installation instructions? (Required)',
-        validate: installationInput => {
-            if (installationInput) {
+        message: 'What is the Installation Instructions?',
+        when: ({ confirmInstallation }) => {
+            if (confirmInstallation) {
                 return true;
             } else {
-                console.log('Please enter the installation instructions!');
                 return false;
             }
         }
+    }, 
+    {
+        type: 'confirm',
+        name: 'confirmUsage',
+        message: 'Would you like to add Usage Information section?',
+        default: true
     },
     {
         type: 'editor',
         name: 'usage',
-        message: 'What is the usage information? (Required)',
-        validate: usageInput => {
-            if (usageInput) {
+        message: 'What is the Usage Information?',
+        when: ({ confirmUsage }) => {
+            if (confirmUsage) {
                 return true;
             } else {
-                console.log('Please enter the usage information!');
                 return false;
             }
         }
+    }, 
+    {
+        type: 'confirm',
+        name: 'confirmContributing',
+        message: 'Would you like to add Contribution Guidelines section?',
+        default: true
     },
     {
         type: 'editor',
         name: 'contributing',
-        message: 'What is the contribution guidelines? (Required)',
-        validate: contributionInput => {
-            if (contributionInput) {
+        message: 'What is the Contribution Guidelines?',
+        when: ({ confirmContributing }) => {
+            if (confirmContributing) {
                 return true;
             } else {
-                console.log('Please enter the contribution guidelines!');
+                return false;
+            }
+        }
+    }, 
+    {
+        type: 'confirm',
+        name: 'confirmTest',
+        message: 'Would you like to add Test Instructions section?',
+        default: true
+    },
+    {
+        type: 'editor',
+        name: 'test',
+        message: 'What is the Test Instructions?',
+        when: ({ confirmTest }) => {
+            if (confirmTest) {
+                return true;
+            } else {
                 return false;
             }
         }
     },
     {
-        type: 'editor',
-        name: 'test',
-        message: 'What is the test instructions? (Required)',
-        validate: testInput => {
-            if (testInput) {
-                return true;
-            } else {
-                console.log('Please enter the test instructions!');
-                return false;
-            }
-        }
+        type: 'confirm',
+        name: 'confirmLicense',
+        message: 'Would you like to add License section?',
+        default: true
     },
     {
         type: 'list',
         name: 'license',
         message: 'What license did you use for this project?',
-        choices: ['Apache License 2.0', 'GNU General Public License v3.0',  'MIT License', "BSD 2-Clause 'Simplified' License", "BSD 3-Clause 'New' or 'Revised' License", 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v2.1', 'Mozilla Public License 2.0', 'The Unlicense']
+        choices: ['Apache License 2.0', 'GNU General Public License v3.0',  'MIT License', "BSD 2-Clause 'Simplified' License", "BSD 3-Clause 'New' or 'Revised' License", 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v2.1', 'Mozilla Public License 2.0', 'The Unlicense'],
+        when: ({ confirmLicense }) => {
+            if (confirmLicense) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmQuestions',
+        message: 'Would you like to add Questions section?',
+        default: true
     },
     {
         type: 'input',
         name: 'username',
         message: 'What is your GitHub Username? (Required)',
-        validate: usernameInput => {
-            if (usernameInput) {
+        when: ({ confirmQuestions }) => {
+            if (confirmQuestions) {
                 return true;
             } else {
-                console.log('Please enter your GitHub Username!');
                 return false;
             }
         }
@@ -107,11 +144,10 @@ const questions = [
         type: 'input',
         name: 'email',
         message: 'What is your email address? (Required)',
-        validate: emailInput => {
-            if (emailInput) {
+        when: ({ confirmQuestions }) => {
+            if (confirmQuestions) {
                 return true;
             } else {
-                console.log('Please enter your email address!');
                 return false;
             }
         }
@@ -120,7 +156,7 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, generatePage(data), err => {
+    fs.writeFile(fileName, generateMarkdown(data), err => {
         // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
         if (err)
             console.log(err);
@@ -136,7 +172,7 @@ function init() {
 
 // Function call to initialize app
 init()
-    .then(results => writeToFile('./dist/README.md', results))
+    .then(results => writeToFile('./README.md', results))
     .catch(err => {
         console.log(err);
     });
