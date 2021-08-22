@@ -28,7 +28,7 @@ function test(confirm, content){
 
 function license(confirm, content){
   if (confirm)
-    return content;
+    return renderLicenseSection(content);
   else
     return '';
 };

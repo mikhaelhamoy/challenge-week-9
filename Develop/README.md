@@ -32,7 +32,9 @@ hello
       
 ## License
 
-MIT License
+
+License under the [MIT License](./LICENSE)
+  
   
 ## Questions
 
